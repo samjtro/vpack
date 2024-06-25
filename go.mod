@@ -1,3 +1,3 @@
-module github.com/samjtro/vplug
+module github.com/samjtro/vpack
 
 go 1.22.3
