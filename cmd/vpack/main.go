@@ -16,7 +16,7 @@ var (
 
 func init() {
 	pluginsPath = fmt.Sprintf("%s/.vim/pack/plugins/start", homeDir())
-	colorsPath = fmt.Sprintf("%s/.vim/pack/colors", homeDir())
+	colorsPath = fmt.Sprintf("%s/.vim/pack/colors/start", homeDir())
 	syntaxPath = fmt.Sprintf("%s/.vim/pack/syntax/start", homeDir())
 	if _, err := os.Stat(pluginsPath); errors.Is(err, os.ErrNotExist) {
 		err := os.MkdirAll(pluginsPath, os.ModePerm)
@@ -34,7 +34,7 @@ func init() {
 
 func main() {
 	switch os.Args[1] {
-	case "c":
+	case "color", "c":
 		switch os.Args[2] {
 		case "update", "u":
 			update("c")
@@ -43,7 +43,7 @@ func main() {
 		case "remove", "r":
 			remove(os.Args[3], "c")
 		}
-	case "p":
+	case "plugin", "p":
 		switch os.Args[2] {
 		case "update", "u":
 			update("p")
@@ -52,7 +52,7 @@ func main() {
 		case "remove", "r":
 			remove(os.Args[3], "p")
 		}
-	case "s":
+	case "syntax", "s":
 		switch os.Args[2] {
 		case "update", "u":
 			update("s")
