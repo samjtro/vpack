@@ -16,7 +16,7 @@ var (
 
 func init() {
 	pluginsPath = fmt.Sprintf("%s/.vim/pack/plugins/start", homeDir())
-	colorsPath = fmt.Sprintf("%s/.vim/pack/colors/start", homeDir())
+	colorsPath = fmt.Sprintf("%s/.vim/pack/colors", homeDir())
 	syntaxPath = fmt.Sprintf("%s/.vim/pack/syntax/start", homeDir())
 	if _, err := os.Stat(pluginsPath); errors.Is(err, os.ErrNotExist) {
 		err := os.MkdirAll(pluginsPath, os.ModePerm)
@@ -94,31 +94,21 @@ func remove(name, arg string) {
 }
 
 func update(arg string) {
+	var path string
 	switch arg {
 	case "c":
-		elements, err := os.ReadDir(colorsPath)
-		check(err)
-		for _, x := range elements {
-			cmd := exec.Command("git", "pull", "origin", "master")
-			cmd.Dir = fmt.Sprintf("%s/%s", colorsPath, x.Name())
-			stdcmd(cmd)
-		}
+		path = colorsPath
 	case "p":
-		elements, err := os.ReadDir(pluginsPath)
-		check(err)
-		for _, x := range elements {
-			cmd := exec.Command("git", "pull", "origin", "master")
-			cmd.Dir = fmt.Sprintf("%s/%s", pluginsPath, x.Name())
-			stdcmd(cmd)
-		}
+		path = pluginsPath
 	case "s":
-		elements, err := os.ReadDir(syntaxPath)
-		check(err)
-		for _, x := range elements {
-			cmd := exec.Command("git", "pull", "origin", "master")
-			cmd.Dir = fmt.Sprintf("%s/%s", syntaxPath, x.Name())
-			stdcmd(cmd)
-		}
+		path = syntaxPath
+	}
+	elements, err := os.ReadDir(path)
+	check(err)
+	for _, x := range elements {
+		cmd := exec.Command("git", "pull", "origin", "master")
+		cmd.Dir = fmt.Sprintf("%s/%s", path, x.Name())
+		stdcmd(cmd)
 	}
 	fmt.Printf("[vpack] All plugins updated\n")
 }
