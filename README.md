@@ -1,31 +1,32 @@
 # vplug
-pure-go native vim package management. update is currently encountering a bug.
-
 ## usage
+
+### quick start
+
+0. `go install github.com/samjtro/vpack@latest`
 
 ### plugins
 
 e.g. Install 'nerdtree' plugin:
-`vpack p install https://github.com/preservim/nerdtree` | `vpack p i ...`
+`vpack p i https://github.com/preservim/nerdtree` | `vpack p install ...`
 
 e.g. Remove 'nerdtree' plugin:
-`vpack p remove nerdtree` | `vpack p r nerdtree`
+`vpack p r nerdtree` | `vpack p remove nerdtree`
 
 Update all plugins:
-`vpack p update` | `vpack p u`
+`vpack p u` | `vpack p update`
 
 ### colors
 
 e.g. Install 'Tokyo Night' scheme:
-`vpack c install https://github.com/` | `vpack c i ...`
+`vpack c i https://github.com/` | `vpack c install ...`
 
 e.g. Remove 'Tokyo Night' scheme:
-`vpack c remove tokyo-night` | `vpack c r tokyo-night`
+`vpack c r tokyo-night` | `vpack c remove tokyo-night`
 
 Update all color schemes:
-`vpack c update` | `vpack c u`
+`vpack c u` | `vpack c update`
 
 ### syntax
 
-Update all syntaxes:
-`vpack s update` | `vpack s u`
+Same as above, although I haven't tested it.
