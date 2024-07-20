@@ -1,32 +1,30 @@
-# vplug
+# vpack
+
 ## usage
-
-### quick start
-
-0. `go install github.com/samjtro/vpack@latest`
 
 ### plugins
 
 e.g. Install 'nerdtree' plugin:
-`vpack p i https://github.com/preservim/nerdtree` | `vpack p install ...`
+`vpack p install https://github.com/preservim/nerdtree` | `vpack p i ...`
 
 e.g. Remove 'nerdtree' plugin:
-`vpack p r nerdtree` | `vpack p remove nerdtree`
+`vpack p remove nerdtree` | `vpack p r nerdtree`
 
 Update all plugins:
-`vpack p u` | `vpack p update`
+`vpack p update` | `vpack p u`
 
 ### colors
 
 e.g. Install 'Tokyo Night' scheme:
-`vpack c i https://github.com/` | `vpack c install ...`
+`vpack c install https://github.com/` | `vpack c i ...`
 
 e.g. Remove 'Tokyo Night' scheme:
-`vpack c r tokyo-night` | `vpack c remove tokyo-night`
+`vpack c remove tokyo-night` | `vpack c r tokyo-night`
 
 Update all color schemes:
-`vpack c u` | `vpack c update`
+`vpack c update` | `vpack c u`
 
 ### syntax
 
-Same as above, although I haven't tested it.
+Update all syntaxes:
+`vpack s update` | `vpack s u`

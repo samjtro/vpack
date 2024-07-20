@@ -6,7 +6,6 @@ import (
 	"log"
 	"os"
 	"os/exec"
-	"os/user"
 	"strings"
 )
 
@@ -33,33 +32,48 @@ func init() {
 }
 
 func main() {
-	switch os.Args[1] {
-	case "color", "c":
-		switch os.Args[2] {
-		case "update", "u":
-			update("c")
-		case "install", "i":
-			install(os.Args[3], "c")
-		case "remove", "r":
-			remove(os.Args[3], "c")
-		}
-	case "plugin", "p":
-		switch os.Args[2] {
-		case "update", "u":
-			update("p")
-		case "install", "i":
-			install(os.Args[3], "p")
-		case "remove", "r":
-			remove(os.Args[3], "p")
-		}
-	case "syntax", "s":
-		switch os.Args[2] {
-		case "update", "u":
-			update("s")
-		case "install", "i":
-			install(os.Args[3], "s")
-		case "remove", "r":
-			remove(os.Args[3], "s")
+	if len(os.Args) == 1 {
+		fmt.Println(`welcome to vpack. usage:
+vpack c i [https://repository.url] - install color scheme to ~/.vim/pack/colors/start/[name_of_repository]
+vpack c r [name_of_repository] - remove color scheme
+vpack c u - update all color schemes
+
+vpack p i [https://repository.url] - install plugin to ~/.vim/pack/plugin/start/[name_of_repository]
+vpack p r [name_of_repository] - remove plugin
+vpack p u - update all plugins
+
+vpack s i [https://repository.url] - install syntax to ~/.vim/pack/syntax/start/[name_of_repository]
+vpack s r [name_of_repository] - remove syntax
+vpack s u - update all syntaxes`)
+	} else {
+		switch os.Args[1] {
+		case "color", "c":
+			switch os.Args[2] {
+			case "update", "u":
+				update("c")
+			case "install", "i":
+				install(os.Args[3], "c")
+			case "remove", "r":
+				remove(os.Args[3], "c")
+			}
+		case "plugin", "p":
+			switch os.Args[2] {
+			case "update", "u":
+				update("p")
+			case "install", "i":
+				install(os.Args[3], "p")
+			case "remove", "r":
+				remove(os.Args[3], "p")
+			}
+		case "syntax", "s":
+			switch os.Args[2] {
+			case "update", "u":
+				update("s")
+			case "install", "i":
+				install(os.Args[3], "s")
+			case "remove", "r":
+				remove(os.Args[3], "s")
+			}
 		}
 	}
 }
@@ -114,9 +128,9 @@ func update(arg string) {
 }
 
 func homeDir() string {
-	currentUser, err := user.Current()
+	homedir, err := os.UserHomeDir()
 	check(err)
-	return fmt.Sprintf("/home/%s", currentUser.Username)
+	return homedir
 }
 
 func stdcmd(cmd *exec.Cmd) {
