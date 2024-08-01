@@ -1,30 +1,21 @@
 # vpack
 
-## usage
+0. install: `go install github.com/samjtro/vpack@latest`
+1. use: `vpack`
 
-### plugins
+output:
 
-e.g. Install 'nerdtree' plugin:
-`vpack p install https://github.com/preservim/nerdtree` | `vpack p i ...`
+```
+welcome to vpack. usage:
+vpack c i [https://repository.url] - install color scheme to ~/.vim/pack/colors/start/[name_of_repository]
+vpack c r [name_of_repository] - remove color scheme
+vpack c u - update all color schemes
 
-e.g. Remove 'nerdtree' plugin:
-`vpack p remove nerdtree` | `vpack p r nerdtree`
+vpack p i [https://repository.url] - install plugin to ~/.vim/pack/plugin/start/[name_of_repository]
+vpack p r [name_of_repository] - remove plugin
+vpack p u - update all plugins
 
-Update all plugins:
-`vpack p update` | `vpack p u`
-
-### colors
-
-e.g. Install 'Tokyo Night' scheme:
-`vpack c install https://github.com/` | `vpack c i ...`
-
-e.g. Remove 'Tokyo Night' scheme:
-`vpack c remove tokyo-night` | `vpack c r tokyo-night`
-
-Update all color schemes:
-`vpack c update` | `vpack c u`
-
-### syntax
-
-Update all syntaxes:
-`vpack s update` | `vpack s u`
+vpack s i [https://repository.url] - install syntax to ~/.vim/pack/syntax/start/[name_of_repository]
+vpack s r [name_of_repository] - remove syntax
+vpack s u - update all syntaxes
+```
